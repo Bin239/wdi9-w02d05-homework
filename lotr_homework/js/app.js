@@ -149,7 +149,6 @@ const makeBuddies = () => {
   for (let i =0; i < buddies.length; i++){
 		$('#buddies').append('<li class ="buddy">' + buddies[i] + '</buddy>');
 	}
-  $('#' + lands[0]).children().detach().appendTo('#' + lands[1]);
 };
 
 
@@ -164,6 +163,7 @@ const leaveTheShire = () => {
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
 
   // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
+  $('#' + lands[0]).children('ul').detach().appendTo('#' + lands[1]);
 
 };
 
@@ -178,7 +178,7 @@ const beautifulStranger = () => {
   // 1. change the buddy 'Strider' textnode to "Aragorn"
 
   // hint: You can get a list of elements by tag name, such as 'aside'
-
+  $('aside .buddy:contains("Strider")').text('Aragorn');
 };
 
 // COMMIT YOUR WORK
@@ -188,6 +188,11 @@ const beautifulStranger = () => {
 // Chapter 8
 // ============
 const forgeTheFellowShip = () => {
+  const $fellers = $('<div id ="the-fellowship"></div>');
+  $fellers.html('<h1>The FellowShip</h1>');
+  $('#middle-earth').append($fellers);
+  $('#Rivendell').children('ul').detach().appendTo($fellers);
+  $('aside').detach().appendTo($fellers);
 
   // 1. create a new div with an id 'the-fellowship'
 
@@ -206,7 +211,8 @@ const forgeTheFellowShip = () => {
 // Chapter 9
 // ============
 const theBalrog = () => {
-
+    $('aside .buddy:contains("Gandalf the Grey")').text('Gandalf the White');
+    $('aside .buddy:contains("Gandalf the White")').attr('class', 'the-white');
   // 1. change the 'Gandalf' textNode to 'Gandalf the White'
 
   // 2. add a class "the-white" to this element
@@ -222,7 +228,9 @@ const theBalrog = () => {
 // Chapter 10
 // ============
 const hornOfGondor = () => {
-
+    alert('The horn of gondor has been blown');
+    $(' .buddy:contains("Boromir")').css('text-decoration', 'line-through');
+    $('.baddy:contains("The Uruk-hai")').remove();
   // 1. create a pop-up alert that the horn of gondor has been blown
 
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
@@ -238,7 +246,9 @@ const hornOfGondor = () => {
 // Chapter 11
 // ============
 const itsDangerousToGoAlone = () => {
-
+    $('.hobbit:contains("Frodo Baggins")').detach().appendTo('#Mordor');
+	  $('.hobbit:contains("Samwise \'Sam\' Gamgee")').detach().appendTo('#Mordor');
+    $('#Mordor').append('<div id ="mount-doom"></div>');
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
 
   // 2. add a div with an id of 'mount-doom' to Mordor
@@ -252,6 +262,9 @@ const itsDangerousToGoAlone = () => {
 // Chapter 12
 // ============
 const weWantsIt = () => {
+    $('#Mordor').append('<div id ="gollum"></div>');
+    $('#the-ring').detach().appendTo('#gollum');
+    $('#golllum').detach().appendTo('#mount-doom');
 
   // 1. Create a div with an id of 'gollum' and add it to Mordor
 
@@ -268,6 +281,9 @@ const weWantsIt = () => {
 // Chapter 13
 // ============
 const thereAndBackAgain = () => {
+    $('#gollum').remove();
+    $('.baddy').remove();
+    $('.hobbit').detach().appendTo('#The-Shire');
 
   // 1. remove Gollum and the Ring from the DOM
 
