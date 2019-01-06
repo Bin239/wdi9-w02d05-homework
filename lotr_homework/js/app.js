@@ -77,6 +77,10 @@ const makeHobbits = () => {
   console.log('Make hobbits');
 
   // 1. display an unordered list of the hobbits in the shire.
+  $('#' + lands[0]).append('<ul id ="hobbits"></ul>');
+	for (let i = 0; i < hobbits.length; i++){
+		$('#hobbits').append('<li class ="hobbit">' + hobbits[i] + '</li>');
+	}
 
   // 2. give each hobbit a class of "hobbit"
 
@@ -99,6 +103,8 @@ const keepItSecretKeepItSafe = () => {
   // 2. add the ring as a child of Frodo
 
   // hint: Frodo does not have an id, but there is a command to retrieve all elements with a certain class. This should give you an array for you to access . . .
+  let $ring = $('<div id ="the-ring"></div>');
+	$('.hobbit').eq(0).append($ring);
 
   // when you think you have given Frodo the ring, check in your Elements tab
 
@@ -117,6 +123,11 @@ const makeBaddies = () => {
   // 2. give each of the baddies a class of "baddy"
 
   // 3. remember to append them to Mordor
+
+  $('#' + lands[2]).append('<ul id ="baddies"></ul>');
+	for (let i = 0; i < baddies.length; i++){
+		$('#baddies').append('<li class ="baddy">' + baddies[i] + '</li>');
+	}
 };
 
 // COMMIT YOUR WORK
@@ -133,7 +144,14 @@ const makeBuddies = () => {
 
   // 3. give each of the buddies a class of "buddy"
 
+  const $buddies = $('<aside><ul id ="buddies"></ul></aside>');
+  $('#middle-earth').append($buddies);
+  for (let i =0; i < buddies.length; i++){
+		$('#buddies').append('<li class ="buddy">' + buddies[i] + '</buddy>');
+	}
+  $('#' + lands[0]).children().detach().appendTo('#' + lands[1]);
 };
+
 
 // COMMIT YOUR WORK
 // The commit message should read: "Chapter 5 complete - Made the Buddies".
